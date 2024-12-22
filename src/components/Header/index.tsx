@@ -1,15 +1,23 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
+import Icon from '../Icons';
+import {useTheme} from '../../theme/theme';
+import {createThemedStyles} from '../../theme/createStyles';
 
 const Header: React.FC = () => {
   const navigation = useNavigation();
-
+  const {colors} = useTheme();
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text>Back</Text>
+        <Icon
+          height={30}
+          width={20}
+          primary={colors.mono}
+          source={'Arrowleft'}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -17,8 +25,10 @@ const Header: React.FC = () => {
 
 export default Header;
 
-const styles = StyleSheet.create({
+const styles = createThemedStyles(theme => ({
   container: {
-    backgroundColor: '#38a68d',
+    paddingHorizontal: 13,
+    paddingVertical: 10,
+    backgroundColor: theme.colors.primary.t700,
   },
-});
+}));
