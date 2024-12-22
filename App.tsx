@@ -1,9 +1,10 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import Routes from './src/routes';
 import {enableScreens} from 'react-native-screens';
-import { ThemeProvider, useTheme } from './src/theme/theme';
+import {ThemeProvider, useTheme} from './src/theme/theme';
+import {createThemedStyles} from './src/theme/createStyles';
 
 enableScreens();
 
@@ -16,11 +17,15 @@ function App(): React.JSX.Element {
 }
 
 function AppContent(): React.JSX.Element {
-  const { colors } = useTheme();
+  const {colors} = useTheme();
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: colors.primary }]}>
-      <StatusBar barStyle="light-content" backgroundColor={colors.primary} />
+    <SafeAreaView
+      style={[styles.container, {backgroundColor: colors.primary.t600}]}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={colors.primary.t600}
+      />
       <NavigationContainer>
         <Routes />
       </NavigationContainer>
@@ -30,9 +35,9 @@ function AppContent(): React.JSX.Element {
 
 export default App;
 
-const styles = StyleSheet.create({
+const styles = createThemedStyles(theme => ({
   container: {
     flex: 1,
-    backgroundColor: '#38A69D',
+    backgroundColor: theme.colors.primary.t600,
   },
-});
+}));

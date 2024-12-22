@@ -1,17 +1,11 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Alert, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {RootStackParamList} from '../../routes';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {Login} from '../../Api/Client/Auth/Login';
+import {createThemedStyles} from '../../theme/createStyles';
 // import { Container } from './styles';
 
 const Signin: React.FC = () => {
@@ -71,10 +65,10 @@ const Signin: React.FC = () => {
 
 export default Signin;
 
-const styles = StyleSheet.create({
+const styles = createThemedStyles(theme => ({
   container: {
     flex: 1,
-    backgroundColor: '#38a68d',
+    backgroundColor: theme.colors.primary.t600,
   },
   containerHeader: {
     marginTop: '14%',
@@ -94,8 +88,17 @@ const styles = StyleSheet.create({
     paddingStart: '5%',
     paddingEnd: '5%',
   },
-  title: {fontSize: 20, marginTop: 28, fontFamily: 'poppins-light'},
-  input: {borderBottomWidth: 1, height: 40, marginBottom: 12, fontSize: 16},
+  title: {
+    fontSize: 20,
+    marginTop: 28,
+    fontFamily: theme.fonts.regular,
+  },
+  input: {
+    borderBottomWidth: 1,
+    height: 40,
+    marginBottom: 12,
+    fontSize: 16,
+  },
   button: {
     backgroundColor: '#38a68d',
     width: '100%',
@@ -117,4 +120,4 @@ const styles = StyleSheet.create({
   registerText: {
     color: '#a1a1a1',
   },
-});
+}));

@@ -3,7 +3,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import { createThemedStyles } from '../../theme/createStyles';
+import {createThemedStyles} from '../../theme/createStyles';
 
 type WelcomeScreenNavigationProp = NativeStackNavigationProp<any, 'Welcome'>;
 
@@ -39,14 +39,14 @@ const Welcome: React.FC = () => {
 
 export default Welcome;
 
-export const styles = createThemedStyles((theme) => ({
+export const styles = createThemedStyles(theme => ({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.primary.t600,
   },
   containerLogo: {
     flex: 2,
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.primary.t600,
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'visible',
@@ -62,6 +62,7 @@ export const styles = createThemedStyles((theme) => ({
   },
   title: {
     fontFamily: theme.fonts.regular,
+    color: theme.colors.text.t900,
     fontSize: 24,
     fontWeight: 'bold',
     marginTop: 28,
@@ -69,11 +70,11 @@ export const styles = createThemedStyles((theme) => ({
   },
   text: {
     fontFamily: theme.fonts.regular,
-    color: theme.colors.text,
+    color: theme.colors.text.t600,
   },
   button: {
     position: 'absolute',
-    backgroundColor: theme.colors.primary,
+    backgroundColor: theme.colors.primary.t600,
     borderRadius: 50,
     paddingVertical: 8,
     width: '60%',
